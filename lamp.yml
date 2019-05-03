@@ -1,5 +1,5 @@
 ---
-- hosts: shopizer
+- hosts: local
   become: yes
   tasks:
   - name: fail for other platforms
