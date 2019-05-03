@@ -1,0 +1,45 @@
+---
+- hosts: shopizer
+  become: yes
+  tasks:
+  - name: fail for other platforms
+    fail:
+     msg: "this playbook works only for ubuntu-16.04"
+    when:
+    - ansible_os_family != "Debian"
+  - name: install apache2
+    apt:
+     name: apache2
+     update_cache: yes
+     state: present
+  - debug:
+     msg: "starting apache2"
+    notify:
+      - restart apahe2
+  - name: installing mysql
+    apt:
+     name: mysql-server
+     state: present
+  - debug:
+     msg: "starting mysql"
+  - name: installing php modules
+    apt:
+     name: "{{ item }}"
+     state: present
+    loop:
+    - php
+    - php-mysql
+    - libapache2-mod-php
+  - debug:
+     msg: "starting php"
+  - name: copy php page
+    copy:
+     content: "<?php  phpinfo();  ?>"
+     dest: /var/www/html/info.php
+    notify:
+      - restart apache2
+  handlers:
+  - name: restart apache2
+    systemd:
+     state: restarted
+     name: apache2
