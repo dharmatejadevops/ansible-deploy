@@ -1,5 +1,5 @@
 ---
-- hosts: shopizer
+- hosts: all
   become: yes
   tasks:
     - name: install tree
