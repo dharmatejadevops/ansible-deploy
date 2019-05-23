@@ -83,6 +83,6 @@
   handlers:
     - name: tomcat-8-restart
       service: 
-        name: restart tomcat 
+        name: tomcat 
         state: restarted
         
