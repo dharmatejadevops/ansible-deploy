@@ -70,12 +70,12 @@
       path: /opt/shopizer
       state: directory
       mode: 0755
-  - name: Download apache-tomcat-8.5.40.tar.gz
+  - name: Download gameoflife.war file
     get_url:
       url: https://github.com/dharmatejadevops/wars.git
       dest: /tmp/ 
   - name: move the war file from /tmp to webaps path
-    shell: mv /tmp/wars/gameoflife.war /opt/tomcat/webapps/
+    shell: sudo mv /tmp/wars/gameoflife.war /opt/tomcat/webapps/
   - name: changing permisssions for webapps 
     shell: chmod 755 /opt/tomcat/webapps/gameoflife.war
     notify: 
@@ -85,4 +85,4 @@
       service: 
         name: restart tomcat 
         state: restarted
-
+        
