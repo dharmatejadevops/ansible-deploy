@@ -77,7 +77,7 @@
   - name: move the war file from /tmp to webaps path
     shell: sudo mv /tmp/gameoflife.war /opt/tomcat/webapps/
   - name: changing permisssions for webapps 
-    shell: chmod 755 /opt/tomcat/webapps/gameoflife.war
+    shell: sudo chmod 755 /opt/tomcat/webapps/gameoflife.war
     notify: 
     - tomcat-8-restart
   handlers:
