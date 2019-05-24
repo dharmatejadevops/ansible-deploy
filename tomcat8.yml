@@ -65,11 +65,6 @@
     template: 
       src: context.xml.j2
       dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
-  - name: create directory
-    file:
-      path: /opt/shopizer
-      state: directory
-      mode: 0755
   - name: Download gameoflife.war file
     get_url:
       url: https://s3.amazonaws.com/gameoflife-war-file/gameoflife.war
