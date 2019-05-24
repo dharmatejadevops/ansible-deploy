@@ -72,7 +72,7 @@
       mode: 0755
   - name: Download gameoflife.war file
     get_url:
-      url: https://github.com/dharmatejadevops/wars/blob/master/gameoflife.war
+      url: https://s3.amazonaws.com/gameoflife-war-file/gameoflife.war
       dest: /tmp/ 
   - name: move the war file from /tmp to webaps path
     shell: mv /tmp/gameoflife.war /opt/tomcat/webapps/
