@@ -65,10 +65,6 @@
     template: 
       src: context.xml.j2
       dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
-  - name: move the war file from /tmp to webaps path
-    shell: mv /tmp/gameoflife.war /opt/tomcat/webapps/
-  - name: changing permisssions for webapps 
-    shell: chmod 755 /opt/tomcat/webapps/gameoflife.war
     notify: 
     - tomcat-8-restart
   handlers:
